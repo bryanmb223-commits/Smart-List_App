@@ -1,44 +1,104 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Smart List</title>
+
+    <!-- Bootstrap -->
     <link
         href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
         rel="stylesheet"
     >
+
+    <!-- CSS próprio -->
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <header class="bg-danger text-white text-center p-3">
-        <h1>💳 Smart List</h1>
+
+    <header class="bg-success text-white text-center p-3">
+        <h1>🛒 Smart List</h1>
     </header>
+
     <main class="container mt-5">
+
         <div class="card p-4 shadow-sm">
+
             <h2 class="text-center mb-4">
                 Adicionar item
             </h2>
+
             <div class="mb-3">
-                <label for="item" class="form-label">
-                    Item
-                </label>
+
                 <input
                     type="text"
                     class="form-control"
-                    id="item"
+                    id="ItenInput"
                     placeholder="Ex: maçã, leite etc..."
                 >
+
             </div>
-            <button class="btn btn-success">
+
+            <button
+                class="btn btn-success"
+                onclick="addIten()"
+            >
                 Adicionar à lista
             </button>
+
+            <hr>
+
+            <h3>Lista de compras</h3>
+
+            <ul
+                id="listaDeCompras"
+                class="list-group mt-3"
+            >
+            </ul>
+
         </div>
+
     </main>
+
     <footer class="text-center mt-5 p-3 bg-light">
         Projeto Fullstack - 3º DS Coronel © 2026
     </footer>
-    <script
-        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js">
+
+    <script>
+
+        function addIten() {
+
+            const input = document.getElementById("ItenInput");
+
+            const lista = document.getElementById("listaDeCompras");
+
+            if (input.value.trim() !== "") {
+
+                const li = document.createElement("li");
+
+                li.textContent = input.value;
+
+                li.classList.add("list-group-item");
+
+                lista.appendChild(li);
+
+                input.value = "";
+
+                input.focus();
+
+            } else {
+
+                alert("Por favor, digite um Produto");
+
+            }
+
+        }
+
     </script>
+
 </body>
+
 </html>
